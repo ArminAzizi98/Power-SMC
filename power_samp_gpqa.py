@@ -29,7 +29,7 @@ from grader_utils.math_normalize import *
 from grader_utils.parse_utils import *
 from grader_utils.parse_utils import parse_answer
 from power_samp_utils import *
-from smc_samp_utils_noschedule_plus_halt_opt import *
+from smc_samp_utils import *
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
