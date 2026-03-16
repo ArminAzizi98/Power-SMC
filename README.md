@@ -98,8 +98,6 @@ Expected local files/datasets include:
 
 ## Running Experiments
 
-From [power-smc](power-smc):
-
 - MATH:
   - `python -u power_samp_math.py --model qwen --temperature 0.25 --mcmc_steps 10`
 - GSM8K:
