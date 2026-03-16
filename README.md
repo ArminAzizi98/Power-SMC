@@ -37,7 +37,7 @@ where $p_\theta$ is the base model and $\alpha$ controls the sharpness of the di
 
 Power-SMC reformulates power sampling as **Sequential Monte Carlo (SMC) inference**. We maintain $N$ particles (partial sequences), each extended one token at a time from a proposal distribution $q$. At each step $t$, the incremental importance weight for particle $i$ is:
 
-$$w_t^{(i)} = \frac{p_\theta(y_t^{(i)} \mid y_{<t}^{(i)}, x)^{\alpha_t}}{q(y_t^{(i)} \mid y_{<t}^{(i)}, x)}$$
+$$w_t^{(i)} = \frac{p_\theta(y_t^{(i)} \mid y_{\lt t}^{(i)}, x)^{\alpha_t}}{q(y_t^{(i)} \mid y_{\lt t}^{(i)}, x)}$$
 
 When the effective sample size (ESS) drops below a threshold $\kappa N$, we **resample**: duplicating high-weight particles and pruning low-weight ones. This concentrates computation on promising reasoning paths without waiting for complete sequences.
 
@@ -134,7 +134,7 @@ The following example runs Power-SMC inference on a single prompt using a Huggin
 ```python
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from smc_power_sample_memopt import smc_power_sample_memopt, SMCSamplingConfig
+from smc_samp_utils import smc_power_sample_memopt, SMCSamplingConfig
 
 # Load model
 model_name = "Qwen/Qwen2.5-Math-7B-Instruct"
