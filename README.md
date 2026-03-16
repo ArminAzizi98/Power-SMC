@@ -49,7 +49,7 @@ When the effective sample size (ESS) drops below a threshold $\kappa N$, we **re
 
 - **Block-level resampling.** ESS is checked every `block_size` tokens rather than at every step, amortizing the overhead of KV cache reordering and reducing particle impoverishment from excessive resampling.
 
-- **Copy-on-Write (CoW) KV cache.** After resampling, typically only $U \ll N$ unique ancestors survive (e.g., $U \approx 12$ out of $N = 64$). We keep only $U$ physical KV caches and expand logits to $N$ particles via an index mapping, deferring the full cache expansion until particles diverge at the next forward pass. This reduces transient peak memory from $2N$ to $N + U$ cache equivalents.
+- **Copy-on-Write (CoW) KV cache.** After resampling, typically only $U \ll N$ unique ancestors survive. We keep only $U$ physical KV caches and expand logits to $N$ particles via an index mapping, deferring the full cache expansion until particles diverge at the next forward pass. This reduces transient peak memory from $2N$ to $N + U$ cache equivalents.
 
 - **Shared prompt cache.** The prompt is processed once at batch size 1 and the resulting KV cache is replicated to $N$ particles, avoiding redundant computation.
 
@@ -137,7 +137,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from smc_samp_utils import smc_power_sample_memopt, SMCSamplingConfig
 
 # Load model
-model_name = "Qwen/Qwen2.5-Math-7B-Instruct"
+model_name = "Qwen/Qwen2.5-Math-7B"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
