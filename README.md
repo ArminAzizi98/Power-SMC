@@ -122,7 +122,7 @@ Common options across scripts:
 
 SMC-specific settings are defined in `SMCSamplingConfig` in:
 
-- [power-smc/smc_samp_utils_noschedule_plus_halt_opt.py](power-smc/smc_samp_utils_noschedule_plus_halt_opt.py)
+- [smc_samp_utils.py](smc_samp_utils.py)
 
 
 ---
