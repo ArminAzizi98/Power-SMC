@@ -201,4 +201,8 @@ print(output)
 print(f"Selected from round {result['round_idx']}, particle {result['particle_idx']}")
 ```
 
+---
+## Acknowledgments
+
+This repository builds upon the implementation of [Reasoning with Sampling](https://github.com/aakaran/reasoning-with-sampling) by Karan & Du.
 
